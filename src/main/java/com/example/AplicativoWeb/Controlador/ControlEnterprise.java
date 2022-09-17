@@ -1,4 +1,4 @@
-package com.example.aplicativoWed.Controller;
+package com.example.AplicativoWeb.Controlador.;
 
 import com.example.aplicativoWed.Entidades.Enterprise;
 import com.example.aplicativoWed.Servicios.ServiEnterpriseImp;
