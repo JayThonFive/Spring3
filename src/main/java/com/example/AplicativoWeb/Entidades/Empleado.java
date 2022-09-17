@@ -1,4 +1,4 @@
-package com.example.aplicativoWeb.Entidades;
+package com.example.AplicativoWeb.Entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

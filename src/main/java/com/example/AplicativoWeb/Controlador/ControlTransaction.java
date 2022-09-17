@@ -1,7 +1,7 @@
-package com.example.aplicativoWed.Controller;
+package com.example.AplicativoWeb.Controlador;
 
-import com.example.aplicativoWed.Entidades.Transaction;
-import com.example.aplicativoWed.Servicios.ServiTransactionImp;
+import com.example.AplicativoWeb.Entidades.MovimientoDinero;
+import com.example.AplicativoWeb.Servicio.ServiMovDineroImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,21 +11,21 @@ import java.util.List;
 public class ControlTransaction {
 
     @Autowired
-    ServiTransactionImp serviTransactionImp;
+    ServiMovDineroImp serviMovDineroImp;
 
     @GetMapping("/movDinero")
-    private List<Transaction> verMovDinero(){
-        return serviTransactionImp.verMovDinero();
+    private List<MovimientoDinero> verMovDinero(){
+        return serviMovDineroImp.verMovDinero();
     }
 
     @PostMapping("/movDinero")
-    private void crearMOvDinero (@RequestBody Transaction transaction){
-        serviTransactionImp.crearMovDinero(transaction);
+    private void crearMOvDinero (@RequestBody MovimientoDinero movDinero){
+        serviMovDineroImp.crearMovDinero(movDinero);
     }
 
     @DeleteMapping("/movDinero/{id}")
     private void eliminarMOvDinero(@PathVariable("id")Integer id){
-        serviTransactionImp.eliminarMovDinero(id);
+        serviMovDineroImp.eliminarMovDinero(id);
     }
 
 }
