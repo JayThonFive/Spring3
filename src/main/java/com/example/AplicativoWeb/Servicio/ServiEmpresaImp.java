@@ -15,9 +15,9 @@ public class ServiEmpresaImp {
     RepoEmpresa repoEmpresa;
 
     public List<Empresa> verEmpresa(){
-        List<Empresa> enterprises = new ArrayList<Empresa>();
-        enterprises.addAll(repoEmpresa.findAll());
-        return enterprises;
+        List<Empresa> empresa = new ArrayList<Empresa>();
+        empresa.addAll(repoEmpresa.findAll());
+        return empresa;
 
     }
     public void crearEmpresa(Empresa empresa){
@@ -27,8 +27,8 @@ public class ServiEmpresaImp {
     public void editarEmpresa(Empresa empresa){
         repoEmpresa.save(empresa);
     }
-    public void eliminarEmpresa(Integer Id){
-        repoEmpresa.deleteById(Id);
+    public void eliminarEmpresa(Long){
+        repoEmpresa.deleteById(Long);
 
 
     }

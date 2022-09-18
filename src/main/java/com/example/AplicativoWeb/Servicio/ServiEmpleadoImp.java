@@ -4,7 +4,6 @@ import com.example.AplicativoWeb.Entidades.Empleado;
 import com.example.AplicativoWeb.Repositorio.RepoEmpleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,9 @@ public class ServiEmpleadoImp {
 
 
     public List<Empleado> verEmpleado(){
-        List<Empleado> employees = new ArrayList<Empleado>();
-        employees.addAll(repoEmpleado.findAll());
-        return employees;
+        List<Empleado> empleados = new ArrayList<Empleado>();
+        empleados.addAll(repoEmpleado.findAll());
+        return empleados;
 
     }
 
