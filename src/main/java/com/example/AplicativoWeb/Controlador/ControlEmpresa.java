@@ -26,7 +26,7 @@ public class ControlEmpresa {
         serviEmpresaImp.crearEmpresa(empresa);
     }
     @DeleteMapping("/empresa/{id}")
-    private void eliminarEmpresa (@PathVariable("id")Integer id){
+    private void eliminarEmpresa (@PathVariable("id")Long id){
         serviEmpresaImp.eliminarEmpresa(id);
     }
 
