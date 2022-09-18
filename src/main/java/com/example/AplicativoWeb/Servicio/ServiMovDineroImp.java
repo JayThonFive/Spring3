@@ -12,24 +12,24 @@ import java.util.List;
 public class ServiMovDineroImp {
 
     @Autowired
-    RepoMovDinero repoTransaction;
+    RepoMovDinero repoMovDinero;
 
 
     public List<MovimientoDinero> verMovDinero(){
         List<MovimientoDinero> transactions = new ArrayList<MovimientoDinero>();
-        transactions.addAll(repoTransaction.findAll());
+        transactions.addAll(repoMovDinero.findAll());
         return transactions;
 
     }
     public void crearMovDinero(MovimientoDinero movDinero){
-        repoTransaction.save(movDinero);
+        repoMovDinero.save(movDinero);
 
     }
     public void editarMovDinero(){
 
     }
     public void eliminarMovDinero(Integer Id){
-        repoTransaction.deleteById(Id);
+        repoMovDinero.deleteById(Id);
 
     }
 }
