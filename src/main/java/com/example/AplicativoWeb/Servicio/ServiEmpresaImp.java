@@ -27,7 +27,7 @@ public class ServiEmpresaImp {
     public void editarEmpresa(Empresa empresa){
         repoEmpresa.save(empresa);
     }
-    public void eliminarEmpresa(Integer Id){
+    public void eliminarEmpresa(Long Id){
         repoEmpresa.deleteById(Id);
 
 

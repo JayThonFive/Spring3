@@ -1,5 +1,8 @@
 package com.example.AplicativoWeb.Entidades;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,14 +12,30 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column
+    
+    @Column(unique = true)
     private String nombre;
+    
     @Column
     private String direccion;
+    
     @Column
     private int telefono;
-    @Column
+    
+    @Column(unique = true)
     private int nit;
+    
+	@Column(name = "fecha_modificacion")
+	private Date fechaModificacion;
+	
+	@Column(name = "fecha_creacion")
+	private Date fechaCreacion;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
+	private List<MovimientoDinero> lMovimientoDinero;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
+	private List<Empleado> lEmpleado;    
 
     public Long getId() {
         return id;
@@ -67,4 +86,38 @@ public class Empresa {
     public void setNit(int nit) {
         this.nit = nit;
     }
+
+	public Date getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(Date fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public List<MovimientoDinero> getlMovimientoDinero() {
+		return lMovimientoDinero;
+	}
+
+	public void setlMovimientoDinero(List<MovimientoDinero> lMovimientoDinero) {
+		this.lMovimientoDinero = lMovimientoDinero;
+	}
+
+	public List<Empleado> getlEmpleado() {
+		return lEmpleado;
+	}
+
+	public void setlEmpleado(List<Empleado> lEmpleado) {
+		this.lEmpleado = lEmpleado;
+	}
+    
+    
 }

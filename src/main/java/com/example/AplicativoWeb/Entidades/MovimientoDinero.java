@@ -1,5 +1,7 @@
 package com.example.AplicativoWeb.Entidades;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,12 +14,24 @@ public class MovimientoDinero {
 
     @Column
     private int montMovimiento;
-    @Column
-    private int montoPositivoYNegativo;
+    
     @Column
     private String concepto;
-    @Column
-    private String usuario;
+    
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "empresa_id", nullable = false)
+	private Empresa empresa;	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "empleado_id", nullable = false)
+	private Empleado empleado;	
+	
+	@Column(name = "fecha_modificacion")
+	private Date fechaModificacion;
+	
+	@Column(name = "fecha_creacion")
+	private Date fechaCreacion;	
 
     public Long getId() {
         return id;
@@ -27,11 +41,10 @@ public class MovimientoDinero {
         this.id = id;
     }
 
-    public MovimientoDinero(int montMovimiento, int montoPositivoYNegativo, String concepto, String usuario) {
+    public MovimientoDinero(int montMovimiento, String concepto, Empleado empleado) {
         this.montMovimiento = montMovimiento;
-        this.montoPositivoYNegativo = montoPositivoYNegativo;
         this.concepto = concepto;
-        this.usuario = usuario;
+        this.empleado = empleado;
     }
 
     public MovimientoDinero() {
@@ -45,14 +58,6 @@ public class MovimientoDinero {
         this.montMovimiento = montoMovimiento;
     }
 
-    public int getMontoPositivoYNegativo() {
-        return montoPositivoYNegativo;
-    }
-
-    public void setMontoPositivoYNegativo(int montoPositivoYNegativo) {
-        this.montoPositivoYNegativo = montoPositivoYNegativo;
-    }
-
     public String getConcepto() {
         return concepto;
     }
@@ -61,12 +66,12 @@ public class MovimientoDinero {
         this.concepto = concepto;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }
 
