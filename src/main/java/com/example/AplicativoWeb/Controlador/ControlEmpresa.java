@@ -14,9 +14,10 @@ public class ControlEmpresa {
     ServiEmpresaImp serviEmpresaImp;
 
     @GetMapping("/empresa")
-    private List<com.example.AplicativoWeb.Entidades.Empresa> verEmpresa(){
+    private List<Empresa> verEmpresa(){
         return serviEmpresaImp.verEmpresa();
     }
+
     @PutMapping("/empresa")
     private void actualizarEmpresa (@RequestBody Empresa empresa){
         serviEmpresaImp.editarEmpresa(empresa);

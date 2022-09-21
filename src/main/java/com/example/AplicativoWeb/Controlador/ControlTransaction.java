@@ -24,8 +24,8 @@ public class ControlTransaction {
     }
 
     @DeleteMapping("/movDinero/{id}")
-    private void eliminarMOvDinero(@PathVariable("id")Integer id){
-        serviMovDineroImp.eliminarMovDinero(id);
+    private void eliminarMOvDinero(@PathVariable("id")Long Long){
+        serviMovDineroImp.eliminarMovDinero(Long);
     }
 
 }

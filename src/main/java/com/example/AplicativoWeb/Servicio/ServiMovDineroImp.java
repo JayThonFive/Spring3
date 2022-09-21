@@ -28,8 +28,8 @@ public class ServiMovDineroImp {
     public void editarMovDinero(){
 
     }
-    public void eliminarMovDinero(Long){
-        repoMovDinero.deleteById(Long)
+    public void eliminarMovDinero(Long Long){
+        repoMovDinero.deleteById(Long);
 
     }
 }

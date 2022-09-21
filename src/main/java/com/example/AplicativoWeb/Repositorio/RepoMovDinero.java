@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import com.example.AplicativoWeb.Entidades.MovimientoDinero;
 
 @Repository
-public interface RepoMovDinero extends JpaRepository<MovimientoDinero, Integer> {
+public interface RepoMovDinero extends JpaRepository<MovimientoDinero, Long> {
 }
