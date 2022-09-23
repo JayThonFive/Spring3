@@ -23,6 +23,9 @@ public class Empleado {
 
     @Column(name = "rol")
     private String  rol;
+    @ManyToOne
+    @JoinColumn(name = "movDinero")
+    private MovimientoDinero movimientoDinero;
     
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;

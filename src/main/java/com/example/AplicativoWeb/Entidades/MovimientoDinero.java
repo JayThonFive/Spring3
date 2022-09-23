@@ -13,7 +13,7 @@ public class MovimientoDinero {
     private Long idMovDinero;
 
     @Column(name = "montoMovimiento")
-    private int montoMovimiento;
+    private Long montoMovimiento;
     
     @Column(name = "concepto")
     private String concepto;
@@ -24,6 +24,10 @@ public class MovimientoDinero {
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;
 
+    @OneToOne
+    @JoinColumn(name = "empleado")
+    public Empleado empleado;
+
     public Long getIdMovDinero() {
         return idMovDinero;
     }
@@ -32,11 +36,11 @@ public class MovimientoDinero {
         this.idMovDinero = idMovDinero;
     }
 
-    public int getMontoMovimiento() {
+    public long getMontoMovimiento() {
         return montoMovimiento;
     }
 
-    public void setMontoMovimiento(int montoMovimiento) {
+    public void setMontoMovimiento(long montoMovimiento) {
         this.montoMovimiento = montoMovimiento;
     }
 
@@ -62,6 +66,14 @@ public class MovimientoDinero {
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = new Date();
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }
 

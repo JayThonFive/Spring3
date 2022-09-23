@@ -87,10 +87,4 @@ public class Empresa {
 		this.fechaCreacion = new Date();
 	}
 
-    public Long getIdEmpresa() {
-        return idEmpresa;
-    }
-    public void setIdEmpresa(Long idEmpresa) {
-        this.idEmpresa = idEmpresa;
-    }
 }
