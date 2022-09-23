@@ -13,17 +13,17 @@ public class ControlTransaction {
     @Autowired
     ServiMovDineroImp serviMovDineroImp;
 
-    @GetMapping("/movDinero")
+    @GetMapping("/movements")
     private List<MovimientoDinero> verMovDinero(){
         return serviMovDineroImp.verMovDinero();
     }
 
-    @PostMapping("/movDinero")
+    @PostMapping("/movements")
     private void crearMOvDinero (@RequestBody MovimientoDinero movDinero){
         serviMovDineroImp.crearMovDinero(movDinero);
     }
 
-    @DeleteMapping("/movDinero/{id}")
+    @DeleteMapping("/movements/{id}")
     private void eliminarMOvDinero(@PathVariable("id")Long Long){
         serviMovDineroImp.eliminarMovDinero(Long);
     }

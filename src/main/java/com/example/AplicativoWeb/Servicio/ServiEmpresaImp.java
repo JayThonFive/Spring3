@@ -30,4 +30,7 @@ public class ServiEmpresaImp {
     public void eliminarEmpresa(Long Id){
         repoEmpresa.deleteById(Id);
     }
+    public void empresaId (Long Id){
+        repoEmpresa.findById(Id);
+    }
 }

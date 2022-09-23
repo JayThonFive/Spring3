@@ -13,20 +13,24 @@ public class ControlEmpresa {
     @Autowired
     ServiEmpresaImp serviEmpresaImp;
 
-    @GetMapping("/empresa")
+    @GetMapping("/enterprise")
     private List<Empresa> verEmpresa(){
         return serviEmpresaImp.verEmpresa();
     }
+    @GetMapping("/enterprise/{id}")
+    private void empresaId (@PathVariable("id")Long Long) {
+        serviEmpresaImp.empresaId(Long);
+    }
 
-    @PutMapping("/empresa")
+    @PutMapping("/enterprise")
     private void actualizarEmpresa (@RequestBody Empresa empresa){
         serviEmpresaImp.editarEmpresa(empresa);
     }
-    @PostMapping ("/empresa")
+    @PostMapping ("/enterprise")
     private void crearEmpresa(@RequestBody Empresa empresa){
         serviEmpresaImp.crearEmpresa(empresa);
     }
-    @DeleteMapping("/empresa/{id}")
+    @DeleteMapping("/enterprise/{id}")
     private void eliminarEmpresa (@PathVariable("id")Long id){
         serviEmpresaImp.eliminarEmpresa(id);
     }

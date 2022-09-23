@@ -25,6 +25,9 @@ public class ServiEmpleadoImp {
         repoEmpleado.save(empleado);
 
     }
+    public void empleadoId (Integer Id){
+        repoEmpleado.findById(Id);
+    }
     public void editarEmpleado(Empleado empleado){
         repoEmpleado.save(empleado);
 

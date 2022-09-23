@@ -32,4 +32,7 @@ public class ServiMovDineroImp {
         repoMovDinero.deleteById(Long);
 
     }
+    public void moviDineroId (Long Id){
+        repoMovDinero.findById(Id);
+    }
 }
