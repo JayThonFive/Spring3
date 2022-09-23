@@ -6,23 +6,23 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "enterprise")
+@Table(name = "empresa")
 public class Empresa {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_empresa")
+    private Long idEmpresa;
     
-    @Column(unique = true)
+    @Column(name = "nombre",unique = true)
     private String nombre;
     
-    @Column
+    @Column(name = "direccion")
     private String direccion;
     
-    @Column
+    @Column(name = "telefono")
     private int telefono;
     
-    @Column(unique = true)
+    @Column(name = "NIT",unique = true)
     private int nit;
     
 	@Column(name = "fecha_modificacion")
@@ -30,29 +30,13 @@ public class Empresa {
 	
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
-	private List<MovimientoDinero> lMovimientoDinero;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
-	private List<Empleado> lEmpleado;    
 
     public Long getId() {
-        return id;
+        return idEmpresa;
     }
 
     public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Empresa(String nombre, String direccion, int telefono, int nit) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.nit = nit;
-    }
-
-    public Empresa() {
+        this.idEmpresa= id;
     }
 
     public String getNombre() {
@@ -92,7 +76,7 @@ public class Empresa {
 	}
 
 	public void setFechaModificacion(Date fechaModificacion) {
-		this.fechaModificacion = fechaModificacion;
+		this.fechaModificacion = new Date();
 	}
 
 	public Date getFechaCreacion() {
@@ -100,24 +84,13 @@ public class Empresa {
 	}
 
 	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+		this.fechaCreacion = new Date();
 	}
 
-	public List<MovimientoDinero> getlMovimientoDinero() {
-		return lMovimientoDinero;
-	}
-
-	public void setlMovimientoDinero(List<MovimientoDinero> lMovimientoDinero) {
-		this.lMovimientoDinero = lMovimientoDinero;
-	}
-
-	public List<Empleado> getlEmpleado() {
-		return lEmpleado;
-	}
-
-	public void setlEmpleado(List<Empleado> lEmpleado) {
-		this.lEmpleado = lEmpleado;
-	}
-    
-    
+    public Long getIdEmpresa() {
+        return idEmpresa;
+    }
+    public void setIdEmpresa(Long idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
 }

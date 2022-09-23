@@ -5,29 +5,36 @@ import com.example.AplicativoWeb.Repositorio.RepoEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ServiEmpresaImp {
+public class ServiEmpresaImp implements IEmpresaService{
 
     @Autowired
-    RepoEmpresa repoEmpresa;
-
-    public List<Empresa> verEmpresa(){
-        List<Empresa> empresa = new ArrayList<Empresa>();
-        empresa.addAll(repoEmpresa.findAll());
-        return empresa;
-
+    private RepoEmpresa repoEmpresa;
+    @Override
+    public Empresa verEmpresa(long id) {
+        Optional<Empresa> empresa = repoEmpresa.findById(id);
+        return empresa.get();
     }
-    public void crearEmpresa(Empresa empresa){
-        repoEmpresa.save(empresa);
-
+    @Override
+    public List<Empresa> buscarTodos() {
+        List<Empresa> empresas = (List<Empresa>) repoEmpresa.findAll();
+        return empresas;
     }
-    public void editarEmpresa(Empresa empresa){
-        repoEmpresa.save(empresa);
+    @Override
+    public Empresa crearEmpresa(Empresa empresa) {
+        Empresa newEmpresa = repoEmpresa.save(empresa);
+        return newEmpresa;
     }
-    public void eliminarEmpresa(Long Id){
-        repoEmpresa.deleteById(Id);
+    @Override
+    public Empresa editarEmpresa(Empresa empresa){
+        Empresa putEmpresa = repoEmpresa.save(empresa);
+        return putEmpresa;
+    }
+    @Override
+    public void eliminarEmpresa(long id){
+        repoEmpresa.deleteById(id);
     }
 }

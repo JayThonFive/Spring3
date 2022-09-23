@@ -8,54 +8,36 @@ import javax.persistence.*;
 @Table(name = "movements")
 public class MovimientoDinero {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_mov_dinero")
+    private Long idMovDinero;
 
-    @Column
-    private int montMovimiento;
+    @Column(name = "montoMovimiento")
+    private int montoMovimiento;
     
-    @Column
+    @Column(name = "concepto")
     private String concepto;
-    
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "empresa_id", nullable = false)
-	private Empresa empresa;	
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "empleado_id", nullable = false)
-	private Empleado empleado;	
-	
+
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
 	
 	@Column(name = "fecha_creacion")
-	private Date fechaCreacion;	
+	private Date fechaCreacion;
 
-    public Long getId() {
-        return id;
+    public Long getIdMovDinero() {
+        return idMovDinero;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public MovimientoDinero(int montMovimiento, String concepto, Empleado empleado) {
-        this.montMovimiento = montMovimiento;
-        this.concepto = concepto;
-        this.empleado = empleado;
-    }
-
-    public MovimientoDinero() {
+    public void setIdMovDinero(Long idMovDinero) {
+        this.idMovDinero = idMovDinero;
     }
 
     public int getMontoMovimiento() {
-        return montMovimiento;
+        return montoMovimiento;
     }
 
     public void setMontoMovimiento(int montoMovimiento) {
-        this.montMovimiento = montoMovimiento;
+        this.montoMovimiento = montoMovimiento;
     }
 
     public String getConcepto() {
@@ -66,12 +48,20 @@ public class MovimientoDinero {
         this.concepto = concepto;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
+    public Date getFechaModificacion() {
+        return fechaModificacion;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = new Date();
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = new Date();
     }
 }
 

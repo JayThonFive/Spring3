@@ -1,60 +1,41 @@
 package com.example.AplicativoWeb.Entidades;
 
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "empleado")
 public class Empleado {
 
     @Id
-    private int documento;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Empleado")
+    private Long documento;
     
-    @Column
+    @Column(name = "nombre")
     private String nombre;
     
-    @Column
+    @Column(name = "correo")
     private String correo;
-    
-	@ManyToOne(fetch = FetchType.LAZY /*, cascade = CascadeType.ALL*/)
-	@JoinColumn(name = "empresa_id", nullable = false)
-	private Empresa empresa;
-	
-	@OneToOne
-	@JoinColumn(name = "perfil_id", nullable = false)
-	private Perfil perfil;
-    
-    @Column
+    @OneToOne
+	@JoinColumn(name = "empresa")
+    private Empresa empresa;
+
+    @Column(name = "rol")
     private String  rol;
     
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
 	
 	@Column(name = "fecha_creacion")
-	private Date fechaCreacion;	    
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empleado")
-	private List<MovimientoDinero> lMovimientoDinero;	
+	private Date fechaCreacion;
 
-    public Empleado(String nombre, String correo, Empresa empresa, String rol) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.empresa = empresa;
-        this.rol = rol;
+    public Long getDocumento() {
+        return documento;
     }
 
-    public Empleado() {
+    public void setDocumento(Long documento) {
+        this.documento = documento;
     }
 
     public String getNombre() {
@@ -89,44 +70,19 @@ public class Empleado {
         this.rol = rol;
     }
 
-	public int getDocumento() {
-		return documento;
-	}
+    public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
 
-	public void setDocumento(int documento) {
-		this.documento = documento;
-	}
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
 
-	public Perfil getPerfil() {
-		return perfil;
-	}
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
 
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
-	}
-
-	public Date getFechaModificacion() {
-		return fechaModificacion;
-	}
-
-	public void setFechaModificacion(Date fechaModificacion) {
-		this.fechaModificacion = fechaModificacion;
-	}
-
-	public Date getFechaCreacion() {
-		return fechaCreacion;
-	}
-
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
-
-	public List<MovimientoDinero> getlMovimientoDinero() {
-		return lMovimientoDinero;
-	}
-
-	public void setlMovimientoDinero(List<MovimientoDinero> lMovimientoDinero) {
-		this.lMovimientoDinero = lMovimientoDinero;
-	}
-	
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 }

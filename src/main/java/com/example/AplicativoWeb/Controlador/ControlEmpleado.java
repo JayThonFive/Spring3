@@ -2,29 +2,38 @@ package com.example.AplicativoWeb.Controlador;
 
 
 import com.example.AplicativoWeb.Entidades.Empleado;
-import com.example.AplicativoWeb.Servicio.ServiEmpleadoImp;
+import com.example.AplicativoWeb.Servicio.IEmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/")
 public class ControlEmpleado {
 
     @Autowired
-    ServiEmpleadoImp serviEmpleadoImp;
+    private IEmpleadoService empleadoService;
 
-    @GetMapping ("/empleado")
-    private List<Empleado> verEmpleado(){
-        return serviEmpleadoImp.verEmpleado();
+    @GetMapping("/empleado/{id}")
+    public Empleado verEmpleado(@PathVariable long id) {
+        return empleadoService.verEmpleado(id);
+    }
+    @GetMapping("/empleado")
+    public List<Empleado> verEmpleado(){
+        return this.empleadoService.buscarTodos();
     }
     @PostMapping ("/empleado")
-    private void crearEmpleado(@RequestBody Empleado empleado){
-        serviEmpleadoImp.crearEmpleado(empleado);
+    public Empleado crearEmpleado (@RequestBody Empleado empleado){
+        return this.empleadoService.crearEmpleado(empleado);
+    }
+    @PutMapping("/empleado")
+    public Empleado editarEmpleado (@RequestBody Empleado empleado){
+        return this.empleadoService.editarEmpleado(empleado);
     }
     @DeleteMapping("/empleado/{id}")
-    private void eliminarEmpleado(@PathVariable("id")Integer id){
-        serviEmpleadoImp.eliminarEmpleado(id);
+    public void eliminarEmpleado(@PathVariable long id){
+        this.empleadoService.eliminarEmpleado(id);
     }
 
 }

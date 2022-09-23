@@ -5,31 +5,37 @@ import com.example.AplicativoWeb.Repositorio.RepoMovDinero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ServiMovDineroImp {
+public class ServiMovDineroImp implements IMovDineroService {
 
     @Autowired
-    RepoMovDinero repoMovDinero;
-
-
-    public List<MovimientoDinero> verMovDinero(){
-        List<MovimientoDinero> transactions = new ArrayList<MovimientoDinero>();
-        transactions.addAll(repoMovDinero.findAll());
-        return transactions;
+    private RepoMovDinero repoMovDinero;
+    @Override
+    public MovimientoDinero verMovDinero(long id){
+        Optional<MovimientoDinero> transaccion = repoMovDinero.findById(id);
+        return transaccion.get();
+    }
+    @Override
+    public List<MovimientoDinero> buscarTodos() {
+        List<MovimientoDinero> transacciones = (List<MovimientoDinero>) repoMovDinero.findAll();
+        return transacciones;
+    }
+    @Override
+    public MovimientoDinero crearMovDinero(MovimientoDinero movDinero){
+        return repoMovDinero.save(movDinero);
 
     }
-    public void crearMovDinero(MovimientoDinero movDinero){
-        repoMovDinero.save(movDinero);
-
+    @Override
+    public MovimientoDinero editarMovDinero(long id, MovimientoDinero movimientoDinero){
+        MovimientoDinero putMovDinero = repoMovDinero.save(movimientoDinero);
+        return putMovDinero;
     }
-    public void editarMovDinero(){
-
-    }
-    public void eliminarMovDinero(Long Long){
-        repoMovDinero.deleteById(Long);
+    @Override
+    public void eliminarMovDinero(long id){
+        repoMovDinero.deleteById(id);
 
     }
 }
