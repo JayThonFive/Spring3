@@ -23,7 +23,7 @@ public class Empresa {
     private int telefono;
     
     @Column(unique = true)
-    private int nit;
+    private String nit;
     
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
@@ -45,7 +45,7 @@ public class Empresa {
         this.id = id;
     }
 
-    public Empresa(String nombre, String direccion, int telefono, int nit) {
+    public Empresa(String nombre, String direccion, int telefono, String nit) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -79,11 +79,11 @@ public class Empresa {
         this.telefono = telefono;
     }
 
-    public int getNit() {
+    public String getNit() {
         return nit;
     }
 
-    public void setNit(int nit) {
+    public void setNit(String nit) {
         this.nit = nit;
     }
 
