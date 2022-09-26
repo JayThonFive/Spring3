@@ -26,7 +26,10 @@ public class Empleado {
     @ManyToOne
     @JoinColumn(name = "movDinero")
     private MovimientoDinero movimientoDinero;
-    
+
+    @Column(name = "estado")
+    private boolean estado;
+
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
 	
@@ -87,5 +90,21 @@ public class Empleado {
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public MovimientoDinero getMovimientoDinero() {
+        return movimientoDinero;
+    }
+
+    public void setMovimientoDinero(MovimientoDinero movimientoDinero) {
+        this.movimientoDinero = movimientoDinero;
     }
 }
