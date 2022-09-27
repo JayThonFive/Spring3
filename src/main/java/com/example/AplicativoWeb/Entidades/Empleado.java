@@ -21,8 +21,9 @@ public class Empleado {
 	@JoinColumn(name = "empresa")
     private Empresa empresa;
 
-    @Column(name = "rol")
-    private String  rol;
+    @OneToOne
+    @JoinColumn(name = "rol")
+    private Rol rol;
     @ManyToOne
     @JoinColumn(name = "movDinero")
     private MovimientoDinero movimientoDinero;
@@ -68,11 +69,11 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
