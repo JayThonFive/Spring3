@@ -1,5 +1,8 @@
 package com.example.AplicativoWeb.Entidades;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -12,10 +15,10 @@ public class MovimientoDinero {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column
+    @Column(name = "montoMovimiento")
     private int montMovimiento;
     
-    @Column
+    @Column (name = "concepto")
     private String concepto;
     
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -26,10 +29,12 @@ public class MovimientoDinero {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "empleado_id", nullable = false)
 	private Empleado empleado;	
-	
+
+    @UpdateTimestamp
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
+
+    @CreationTimestamp
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;	
 

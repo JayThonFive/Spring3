@@ -1,5 +1,8 @@
 package com.example.AplicativoWeb.Entidades;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,11 +25,13 @@ public class Perfil {
 	private String imagen;
 	
 	@Column(name = "telefono")
-	private String telefono;
-	
+	private int telefono;
+
+	@UpdateTimestamp
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
+
+	@CreationTimestamp
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;
 	
@@ -51,11 +56,11 @@ public class Perfil {
 		this.imagen = imagen;
 	}
 
-	public String getTelefono() {
+	public int getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
 

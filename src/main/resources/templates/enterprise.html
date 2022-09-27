@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enterprise</title>
+</head>
+<body>
+    Empresas
+    <table>
+        <tr>
+            #columnas
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Nit</th>
+            <th>Telefono</th>
+        </tr>
+        <tr th:each="enterprise : ${enterprises}">
+            #filas
+            <td th:text="${enterprise.nombre}"></td>
+            <td th:text="${enterprise.direccion}"></td>
+            <td th:text="${enterprise.nit}"></td>
+            <td th:text="${enterprise.telefono}"></td>
+
+        </tr>
+        <a href="/agregarEmpresa">Agregar una nueva Empresa</a>
+
+    </table>
+</body>
+</html>

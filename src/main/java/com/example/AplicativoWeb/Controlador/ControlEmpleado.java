@@ -5,6 +5,7 @@ import com.example.AplicativoWeb.Entidades.Empleado;
 import com.example.AplicativoWeb.Servicio.ServiEmpleadoImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,9 @@ public class ControlEmpleado {
     ServiEmpleadoImp serviEmpleadoImp;
 
     @GetMapping ("/employee")
-    private List<Empleado> verEmpleado(){
-        return serviEmpleadoImp.verEmpleado();
+    private String verEmpleado(Model model){
+        model.addAttribute("employees",serviEmpleadoImp.verEmpleado());
+        return "employee";
     }
     @GetMapping("/employee/{id}")
     private void empleadoId (@PathVariable("id")Integer id){

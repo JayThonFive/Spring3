@@ -1,17 +1,11 @@
 package com.example.AplicativoWeb.Entidades;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 
 @Entity
@@ -21,10 +15,10 @@ public class Empleado {
     @Id
     private int documento;
     
-    @Column
+    @Column(name = "nombre")
     private String nombre;
     
-    @Column
+    @Column(name = "correo")
     private String correo;
     
 	@ManyToOne(fetch = FetchType.LAZY /*, cascade = CascadeType.ALL*/)
@@ -34,13 +28,15 @@ public class Empleado {
 	@OneToOne
 	@JoinColumn(name = "perfil_id", nullable = false)
 	private Perfil perfil;
-    
-    @Column
-    private String  rol;
-    
+
+    @Column(name = "rol", nullable = false)
+    private String rol;
+
+	@UpdateTimestamp
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
+
+	@CreationTimestamp
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;	    
 	

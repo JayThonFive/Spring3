@@ -1,5 +1,8 @@
 package com.example.AplicativoWeb.Entidades;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.util.Date;
 import java.util.List;
 
@@ -24,10 +27,12 @@ public class Empresa {
     
     @Column(unique = true)
     private int nit;
-    
+
+    @UpdateTimestamp
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
+
+    @CreationTimestamp
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;
 	

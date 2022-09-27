@@ -27,5 +27,4 @@ public class ControlTransaction {
     private void eliminarMOvDinero(@PathVariable("id")Long Long){
         serviMovDineroImp.eliminarMovDinero(Long);
     }
-
 }
