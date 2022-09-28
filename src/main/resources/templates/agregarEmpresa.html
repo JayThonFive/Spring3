@@ -8,8 +8,7 @@
     <title>AgregarEmpresa</title>
 </head>
 <body>
-    <form th:action="@@
-    {/}" method="post">
+    <form th:action="@{/enterprise}" method="post">
 
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" th:field="${enterprise.nombre}">

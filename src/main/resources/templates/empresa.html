@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Enterprise</title>
+    <title>Empresa</title>
 </head>
 <body>
-    Empresas
+
     <table>
         <tr>
             #columnas
@@ -17,12 +17,12 @@
             <th>Nit</th>
             <th>Telefono</th>
         </tr>
-        <tr th:each="enterprise : ${enterprises}">
+        <tr th:each="empresa : ${empresa}">
             #filas
-            <td th:text="${enterprise.nombre}"></td>
-            <td th:text="${enterprise.direccion}"></td>
-            <td th:text="${enterprise.nit}"></td>
-            <td th:text="${enterprise.telefono}"></td>
+            <td th:text="${empresa.nombre}"></td>
+            <td th:text="${empresa.direccion}"></td>
+            <td th:number="${empresa.nit}"></td>
+            <td th:number="${empresa.telefono}"></td>
 
         </tr>
         <a href="/agregarEmpresa">Agregar una nueva Empresa</a>
