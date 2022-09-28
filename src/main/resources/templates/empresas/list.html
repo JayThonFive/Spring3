@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Empresas</title>
+</head>
+<body>
+<h1>Lista de Empresas</h1>
+<a th:href="@{/}">Home</a>
+<br>
+<a th:href="@{/empresas/crear}">Nueva empresa</a>
+<br>
+<table border="1">
+  <tr>
+    <th>Nombre</th>
+  </tr>
+  <tr th:each="empresa:${empresas}">
+    <td th:text="${empresa.nombre}"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos de empresa</title>
+</head>
+<body>
+<h1>Datos de empresa</h1>
+<form th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" th:field="*{nombre}"/>
+    <br>
+    <label for="direccion">Direccion</label>
+    <input type="text" name="direccion" th:field="*{direccion}"/>
+    <br>
+    <label for="telefono">Telefono</label>
+    <input type="text" name="telefono" th:field="*{telefono}"/>
+    <br>
+    <label for="nit">NIT</label>
+    <input type="text" name="nit" th:field="*{nit}"/>
+    <br>
+    <input type="submit" name="guardar" value="Guardar">
+</form>
+</body>
+</html>

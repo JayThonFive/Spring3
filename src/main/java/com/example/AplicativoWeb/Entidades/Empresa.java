@@ -24,6 +24,9 @@ public class Empresa {
     
     @Column(name = "NIT",unique = true)
     private String nit;
+
+    @Column(name = "estado")
+    private boolean estado;
     
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
@@ -87,4 +90,19 @@ public class Empresa {
 		this.fechaCreacion = new Date();
 	}
 
+    public Long getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Long idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }

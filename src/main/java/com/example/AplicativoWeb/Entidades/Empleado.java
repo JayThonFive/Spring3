@@ -17,12 +17,12 @@ public class Empleado {
     
     @Column(name = "correo")
     private String correo;
-    @OneToOne
+    @ManyToOne
 	@JoinColumn(name = "empresa")
     private Empresa empresa;
 
-    @OneToOne
-    @JoinColumn(name = "rol")
+    @ManyToOne
+    @JoinColumn(name = "id_rol")
     private Rol rol;
     @ManyToOne
     @JoinColumn(name = "movDinero")
@@ -108,4 +108,5 @@ public class Empleado {
     public void setMovimientoDinero(MovimientoDinero movimientoDinero) {
         this.movimientoDinero = movimientoDinero;
     }
+
 }

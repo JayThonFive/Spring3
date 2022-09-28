@@ -45,7 +45,7 @@ public class EmpleadoController {
         //Roles
         List<Rol> roles = rolService.buscarTodos();
         model.addAttribute("roles",roles);
-        //Tipo de Documento
+        //Empresa
         List<Empresa> empresa = empresaService.buscarTodos();
         model.addAttribute("empresa",empresa);
         //Movimiento de dinero
@@ -53,7 +53,7 @@ public class EmpleadoController {
         model.addAttribute("movimientoDinero",movimientoDinero);
         return "/empleados/modificar";
     }
-    @PostMapping("/guardar")
+    @PostMapping("/empleados/guardar")
     public String guardarEmpleado(Empleado user){
         LOG.log(Logger.Level.INFO,"guardarEmpleado");
         user.setEstado(true);
