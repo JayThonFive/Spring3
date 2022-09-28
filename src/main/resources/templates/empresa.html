@@ -8,7 +8,7 @@
     <title>Empresa</title>
 </head>
 <body>
-
+    listado empresas
     <table>
         <tr>
             #columnas
@@ -16,13 +16,15 @@
             <th>Direccion</th>
             <th>Nit</th>
             <th>Telefono</th>
+            <th>Borrar</th>
         </tr>
-        <tr th:each="empresa : ${empresa}">
+        <tr th:each="empresa : ${empresas}">
             #filas
             <td th:text="${empresa.nombre}"></td>
             <td th:text="${empresa.direccion}"></td>
-            <td th:number="${empresa.nit}"></td>
+            <td th:text="${empresa.nit}"></td>
             <td th:number="${empresa.telefono}"></td>
+            <td><a th:href="@{/empresa/borrar/{id} (id = ${empresa.id}})">Borrar</a></td>
 
         </tr>
         <a href="/agregarEmpresa">Agregar una nueva Empresa</a>

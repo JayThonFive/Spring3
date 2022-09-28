@@ -8,19 +8,19 @@
     <title>AgregarEmpresa</title>
 </head>
 <body>
-    <form th:action="@{/enterprise}" method="post">
+    <form th:action="@{/empresa}" method="post">
 
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" th:field="${enterprise.nombre}">
+        <input type="text" id="nombre" th:field="${empresa.nombre}">
 
         <label for="direccion">Direccion</label>
-        <input type="text" id="direccion" th:field="${enterprise.direccion}">
+        <input type="text" id="direccion" th:field="${empresa.direccion}">
 
         <label for="nit">Nit</label>
-        <input type="number" id="nit" th:field="${enterprise.nit}">
+        <input type="text" id="nit" th:field="${empresa.nit}">
 
         <label for="telefono">Telefono</label>
-        <input type="number" id="telefono" th:field="${enterprise.telefono}">
+        <input type="number" id="telefono" th:field="${empresa.telefono}">
 
         <input type="submit" value="AgregarEmpresa">
 

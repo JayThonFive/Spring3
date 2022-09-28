@@ -14,12 +14,12 @@ public class ControlEmpresa {
     @Autowired
     ServiEmpresaImp serviEmpresaImp;
 
-    @GetMapping("/enterprise")
+    @GetMapping("/empresa")
     private String verEmpresa(Model model){
-        model.addAttribute("enterprises",serviEmpresaImp.verEmpresa());
+        model.addAttribute("empresas",serviEmpresaImp.verEmpresa());
         return "empresa";
     }
-    @GetMapping("/enterprise/{id}")
+    @GetMapping("/empresa/{id}")
     private void empresaId (@PathVariable("id")Long Long) {
         serviEmpresaImp.empresaId(Long);
     }
@@ -28,19 +28,20 @@ public class ControlEmpresa {
     private String formularioEmpresa (Empresa empresa){
         return "agregarEmpresa";
     }
-    @PostMapping ("/enterprise")
+    @PostMapping ("/empresa")
     private String crearEmpresa(Empresa empresa){
         serviEmpresaImp.crearEmpresa(empresa);
         return "redirect:/empresa";
     }
 
-    @PutMapping("/enterprise")
+    @PutMapping("/empresa")
     private void actualizarEmpresa (@RequestBody Empresa empresa){
         serviEmpresaImp.editarEmpresa(empresa);
     }
-    @DeleteMapping("/enterprise/{id}")
-    private void eliminarEmpresa (@PathVariable("id")Long id){
+    @GetMapping("/empresa/borrar/{id}")
+    private String eliminarEmpresa (@PathVariable("id")Long id){
         serviEmpresaImp.eliminarEmpresa(id);
+        return "redirect:/empresa";
     }
 
 }
