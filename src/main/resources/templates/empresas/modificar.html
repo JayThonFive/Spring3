@@ -5,7 +5,8 @@
     <title>Datos de empresa</title>
 </head>
 <body>
-<h1>Datos de empresa</h1>
+<header th:replace="layout/plantilla :: header"></header>
+<h2>Datos de empresa</h2>
 <form th:action="@{/empresas/guardar}" method="post" th:object="${empresa}">
     <label for="nombre">Nombre</label>
     <input type="text" name="nombre" th:field="*{nombre}"/>

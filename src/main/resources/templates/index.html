@@ -6,12 +6,15 @@
   <title>Inicio</title>
 </head>
 <body>
-<h1>Menu</h1>
+<header th:replace="layout/plantilla :: header"></header>
+<h2>Menu</h2>
 <p th:text="${mensaje}"></p>
 <a th:href="@{/empleados/list}">Sistema de gestion de Empleados</a>
 <br>
 <a th:href="@{/empresas/list}">Sistema de gestion de Empresas</a>
 <br>
 <a th:href="@{/movimientos/list}">Sistema de gestion de Movimientos</a>
+<br>
+<footer th:replace="layout/plantilla :: footer"></footer>
 </body>
 </html>

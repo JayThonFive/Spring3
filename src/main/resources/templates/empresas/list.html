@@ -5,7 +5,8 @@
   <title>Lista de Empresas</title>
 </head>
 <body>
-<h1>Lista de Empresas</h1>
+<header th:replace="layout/plantilla :: header"></header>
+<h2>Lista de Empresas</h2>
 <a th:href="@{/}">Home</a>
 <br>
 <a th:href="@{/empresas/crear}">Nueva empresa</a>
@@ -13,9 +14,13 @@
 <table border="1">
   <tr>
     <th>Nombre</th>
+    <th>Editar</th>
+    <th>Eliminar</th>
   </tr>
   <tr th:each="empresa:${empresas}">
     <td th:text="${empresa.nombre}"></td>
+    <td><a th:href="@{/editar/}+${empresa.idEmpresa}"th:text="Editar"></a></td>
+    <td><a th:href="@{/eliminar/}+${empresa.idEmpresa}"th:text="Eliminar"></a></td>
   </tr>
 </table>
 </body>

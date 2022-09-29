@@ -5,10 +5,11 @@
     <title>Datos de empleado</title>
 </head>
 <body>
-    <h1>Datos de empleado</h1>
+    <header th:replace="layout/plantilla :: header"></header>
+    <h2>Datos de empleado</h2>
     <form th:action="@{/empleados/guardar}" method="post" th:object="${empleado}">
         <label for="documento">Documento</label>
-        <input type="number" name="documento" th:field="*{documento}"/>
+        <input type="text" name="documento" th:field="*{documento}"/>
         <br>
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" th:field="*{nombre}"/>
@@ -20,11 +21,12 @@
         <input type="text" name="empresa" th:field="*{empresa}"/>
         <br>
         <label for="rol">Rol</label>
-        <select th:field="*{rol.idRol}"name="rol">
-            <option value="0"selected>Seleccione roles</option>
-            <option th:each="rol:${roles}"
-                    th:value="${rol.idRol}"
-                    th:text="${rol.descripcion}"></option>
+        <select th:field="*{rol}" name="rol">
+            <option value="" selected>Seleccione rol</option>
+            <option th:each="rol:${T(com.example.AplicativoWeb.Entidades.Rol).values()}"
+                    th:value="${rol}"
+                    th:text="${rol}"
+            ></option>
         </select>
         <br>
         <input type="submit" name="guardar" value="Guardar">

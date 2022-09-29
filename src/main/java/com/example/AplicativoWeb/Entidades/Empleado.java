@@ -9,7 +9,10 @@ public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Empleado")
+    @Column(name = "id_empleado")
+    private Long idEmpleado;
+
+    @Column(name = "documento")
     private Long documento;
     
     @Column(name = "nombre")
@@ -22,14 +25,14 @@ public class Empleado {
     private Empresa empresa;
 
     @ManyToOne
-    @JoinColumn(name = "id_rol")
-    private Rol rol;
-    @ManyToOne
     @JoinColumn(name = "movDinero")
     private MovimientoDinero movimientoDinero;
 
     @Column(name = "estado")
     private boolean estado;
+
+    @Column(name = "rol")
+    private Rol rol;
 
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
@@ -69,14 +72,6 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
     public Date getFechaModificacion() {
         return fechaModificacion;
     }
@@ -109,4 +104,19 @@ public class Empleado {
         this.movimientoDinero = movimientoDinero;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Long getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(Long idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
 }

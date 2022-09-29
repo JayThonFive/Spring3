@@ -3,17 +3,14 @@ package com.example.AplicativoWeb.Controlador;
 import com.example.AplicativoWeb.Entidades.Empleado;
 import com.example.AplicativoWeb.Entidades.Empresa;
 import com.example.AplicativoWeb.Entidades.MovimientoDinero;
-import com.example.AplicativoWeb.Entidades.Rol;
 import com.example.AplicativoWeb.Servicio.IEmpleadoService;
 import com.example.AplicativoWeb.Servicio.IEmpresaService;
 import com.example.AplicativoWeb.Servicio.IMovDineroService;
-import com.example.AplicativoWeb.Servicio.IRolService;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +22,6 @@ public class EmpresaController {
     private IEmpresaService empresaService;
     @Autowired
     private IMovDineroService movDineroService;
-    @Autowired
-    private IRolService rolService;
 
     private final Logger LOG = Logger.getLogger(""+EmpresaController.class);
 
@@ -61,4 +56,5 @@ public class EmpresaController {
         emp=empresaService.crearEmpresa(emp);
         return "redirect:/empresas/list";
     }
+
 }

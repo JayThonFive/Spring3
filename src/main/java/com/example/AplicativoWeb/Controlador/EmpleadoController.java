@@ -3,14 +3,12 @@ package com.example.AplicativoWeb.Controlador;
 import com.example.AplicativoWeb.Entidades.Empleado;
 import com.example.AplicativoWeb.Entidades.Empresa;
 import com.example.AplicativoWeb.Entidades.MovimientoDinero;
-import com.example.AplicativoWeb.Entidades.Rol;
 import com.example.AplicativoWeb.Servicio.*;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +20,6 @@ public class EmpleadoController {
     private IEmpresaService empresaService;
     @Autowired
     private IMovDineroService movDineroService;
-    @Autowired
-    private IRolService rolService;
 
     private final Logger LOG = Logger.getLogger(""+EmpleadoController.class);
 
@@ -42,9 +38,6 @@ public class EmpleadoController {
         //Empleado
         Empleado empleado=new Empleado();
         model.addAttribute("empleado",empleado);
-        //Roles
-        List<Rol> roles = rolService.buscarTodos();
-        model.addAttribute("roles",roles);
         //Empresa
         List<Empresa> empresa = empresaService.buscarTodos();
         model.addAttribute("empresa",empresa);
@@ -61,4 +54,21 @@ public class EmpleadoController {
         user=empleadoService.crearEmpleado(user);
         return "redirect:/empleados/list";
     }
+    @RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+    public String editarEmpleado(@PathVariable("id")long id, Model modelo){
+        LOG.log(Logger.Level.INFO,"editarEmpleado");
+        System.out.println(id);
+        Empleado empleado=empleadoService.verEmpleado(id);
+        System.out.println(empleado.toString());
+        modelo.addAttribute("empleado",empleado);
+
+        return "/empleados/modificar";
+    }
+    @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
+    public String eliminarEmpleado(@PathVariable("id")long id, Model modelo) {
+        LOG.log(Logger.Level.INFO, "eliminarEmpleado");
+        empleadoService.verEmpleado(id);
+        return "redirect:/empleados/list";
+    }
+
 }

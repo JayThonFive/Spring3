@@ -75,5 +75,8 @@ public class MovimientoDinero {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
+
+    public void setEstado(boolean b) {
+    }
 }
 
