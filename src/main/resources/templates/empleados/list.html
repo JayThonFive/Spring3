@@ -19,8 +19,8 @@
         </tr>
         <tr th:each="empleado:${empleados}">
             <td th:text="${empleado.nombre}"></td>
-            <td><a th:href="@{/editar/}+${empleado.documento}"th:text="Editar"></a></td>
-            <td><a th:href="@{/eliminar/}+${empleado.documento}"th:text="Eliminar"></a></td>
+            <td><a th:href="@{/editar/}+${empleado.idEmpleado}"th:text="Editar"></a></td>
+            <td><a th:href="@{/eliminar/}+${empleado.idEmpleado}"th:text="Eliminar"></a></td>
         </tr>
 </table>
 </body>

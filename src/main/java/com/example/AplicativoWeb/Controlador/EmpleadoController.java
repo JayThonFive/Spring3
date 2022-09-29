@@ -67,7 +67,7 @@ public class EmpleadoController {
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
     public String eliminarEmpleado(@PathVariable("id")long id, Model modelo) {
         LOG.log(Logger.Level.INFO, "eliminarEmpleado");
-        empleadoService.verEmpleado(id);
+        empleadoService.eliminarEmpleado(id);
         return "redirect:/empleados/list";
     }
 

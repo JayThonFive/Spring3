@@ -16,8 +16,7 @@ public class ServiEmpleadoImp implements IEmpleadoService{
 
     @Override
     public Empleado verEmpleado(Long id){
-        Optional<Empleado> empleado = repoEmpleado.findById(id);
-        return empleado.get();
+        return repoEmpleado.findById(id).orElseThrow();
     }
     @Override
     public List<Empleado> buscarTodos() {
@@ -30,6 +29,12 @@ public class ServiEmpleadoImp implements IEmpleadoService{
     }
     @Override
     public Empleado editarEmpleado(Empleado empleado){
+
+        //validamos si ya existe el empleado
+        if (!repoEmpleado.existsById(empleado.getIdEmpleado())){
+            new Exception("El empleado con id: " + empleado.getIdEmpleado() + " no existe en el sistema");
+        }
+
         return repoEmpleado.save(empleado);
 
     }
